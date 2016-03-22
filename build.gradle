@@ -1,0 +1,23 @@
+apply from: 'mainbuild/dependencies.gradle'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.0-alpha3'
+    }
+}
+
+allprojects {
+    ext {
+        androidApplicationId = 'com.twere.android.clean.way'
+        androidVersionCode = 1
+        androidVersionName = "1.0"
+    }
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

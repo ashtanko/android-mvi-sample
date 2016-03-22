@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    def mainConfig = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion mainConfig.getAt("compileSdkVersion")
+    buildToolsVersion mainConfig.getAt("buildToolsVersion")
+
+    defaultConfig {
+        applicationId mainConfig.getAt("androidApplicationId")
+        minSdkVersion mainConfig.getAt("minSdkVersion")
+        targetSdkVersion mainConfig.getAt("targetSdkVersion")
+        versionCode mainConfig.getAt("androidVersionCode")
+        versionName mainConfig.getAt("androidVersionName")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    def presentation = rootProject.ext.presentationLayerDependencies
+    def common = rootProject.ext.commonLayerDependencies
+
+    //common
+    compile common.kotlin
+    compile common.rxkotlin
+    provided common.javaxAnnotation
+    kapt common.daggerCompiler
+
+    //parent layer
+    compile presentation.appcompat
+    compile presentation.palette
+    compile presentation.recyclerview
+    compile presentation.cardview
+    compile presentation.design
+    compile presentation.support
+
+    //modules
+    compile project(':data')
+    compile project(':domain')
+
+}
+
+buildscript {
+    ext.kotlin_version = '1.0.1'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
