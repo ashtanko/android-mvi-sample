@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 
 android {
     def mainConfig = rootProject.extensions.getByName("ext")
+    def API_URL = 'API_URL'
+    def ENDPOINT = 'ENDPOINT'
+    def STRING = 'String'
 
     compileSdkVersion mainConfig.getAt("compileSdkVersion")
     buildToolsVersion mainConfig.getAt("buildToolsVersion")
@@ -13,7 +16,26 @@ android {
         targetSdkVersion mainConfig.getAt("targetSdkVersion")
         versionCode mainConfig.getAt("androidVersionCode")
         versionName mainConfig.getAt("androidVersionName")
+        buildConfigField STRING, API_URL, '"https://dribbble.com/"'
+        buildConfigField STRING, ENDPOINT, '"https://api.dribbble.com/v1/"'
     }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'
+        disable 'OldTargetApi'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,11 +53,12 @@ kapt {
 
 dependencies {
     def presentation = rootProject.ext.presentationLayerDependencies
-    def common = rootProject.ext.commonLayerDependencies
+    def common = rootProject.ext.commonDependencies
 
     //common
     compile common.kotlin
     compile common.rxkotlin
+    compile common.dagger
     provided common.javaxAnnotation
     kapt common.daggerCompiler
 
@@ -46,6 +69,7 @@ dependencies {
     compile presentation.cardview
     compile presentation.design
     compile presentation.support
+    compile presentation.kotterknife
 
     //modules
     compile project(':data')
@@ -61,5 +85,10 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 

@@ -15,18 +15,36 @@ ext {
     daggerVersion = '2.0'
     kotlinVersion = '1.0.1'
     javaxAnnotationVersion = '10.0-b28'
-    rxkotlinVersion = '0.30.1'
+    kotterknifeVersion = '0.1.0-SNAPSHOT'
 
-    commonLayerDependencies = [
+    //rx
+    rxkotlinVersion = '0.30.1'
+    rxjavaVersion = '1.1.1'
+    rxandroidVersion = '1.1.0'
+
+    //network
+    gsonVersion = '2.6.1'
+    retrofit2Version = '2.0.0'
+    okhttp3Version = '3.1.2'
+    retrofit2AdapterVersion = '2.0.0-beta4'
+
+
+    commonDependencies = [
             dagger         : "com.google.dagger:dagger:$daggerVersion",
             daggerCompiler : "com.google.dagger:dagger-compiler:$daggerVersion",
             kotlin         : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
             javaxAnnotation: "org.glassfish:javax.annotation:$javaxAnnotationVersion",
             rxkotlin       : "io.reactivex:rxkotlin:$rxkotlinVersion",
+            rxjava         : "io.reactivex:rxjava:$rxjavaVersion",
+            rxandroid      : "io.reactivex:rxandroid:$rxandroidVersion",
     ]
 
     dataLayerDependencies = [
-
+            gson              : "com.google.code.gson:gson:$gsonVersion",
+            retrofit2         : "com.squareup.retrofit2:retrofit:$retrofit2Version",
+            okhttp3           : "com.squareup.okhttp3:okhttp:$okhttp3Version",
+            retrofit2Converter: "com.squareup.retrofit2:converter-gson:$retrofit2Version",
+            retrofit2Adapter  : "com.squareup.retrofit2:adapter-rxjava:$retrofit2AdapterVersion"
     ]
 
     presentationLayerDependencies = [
@@ -36,6 +54,6 @@ ext {
             cardview    : "com.android.support:cardview-v7:$sdkVersion",
             design      : "com.android.support:design:$sdkVersion",
             support     : "com.android.support:support-v4:$sdkVersion",
+            kotterknife     : "com.jakewharton:kotterknife:$kotterknifeVersion",
     ]
-
 }

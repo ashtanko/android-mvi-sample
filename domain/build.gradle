@@ -16,7 +16,7 @@ sourceSets {
 }
 
 dependencies {
-    def common = rootProject.ext.commonLayerDependencies
+    def common = rootProject.ext.commonDependencies
 
     compile common.rxkotlin
 }

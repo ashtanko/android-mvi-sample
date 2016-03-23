@@ -18,6 +18,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'
+        disable 'OldTargetApi'
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -26,13 +43,21 @@ android {
 dependencies {
 
     def data = rootProject.ext.dataLayerDependencies
-    def common = rootProject.ext.commonLayerDependencies
+    def common = rootProject.ext.commonDependencies
 
     //common
     compile common.kotlin
     compile common.rxkotlin
-    //parent layer
+    compile common.rxjava
+    compile common.rxandroid
+    provided common.javaxAnnotation
 
+    //parent layer
+    compile data.gson
+    compile data.retrofit2
+    compile data.okhttp3
+    compile data.retrofit2Converter
+    compile data.retrofit2Adapter
     //modules
     compile project(':domain')
 }
