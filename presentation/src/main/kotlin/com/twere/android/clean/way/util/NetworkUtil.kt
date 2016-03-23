@@ -1,19 +1,17 @@
 package com.twere.android.clean.way.util
 
-import android.content.Context
 import android.net.ConnectivityManager
 
-object NetworkUtil {
+class NetworkUtil(connectivityManager: ConnectivityManager) {
 
     var TYPE_WIFI = 1
     var TYPE_MOBILE = 2
     var TYPE_NOT_CONNECTED = 0
 
-    private val connectivityManager: ConnectivityManager? = null
-    private val context: Context? = null
+    private val connectivityManager: ConnectivityManager = connectivityManager
 
     fun getConnectivityStatus(): Int {
-        val activeNetwork = connectivityManager!!.activeNetworkInfo
+        val activeNetwork = connectivityManager.activeNetworkInfo
         if (null != activeNetwork) {
             when (activeNetwork.type) {
                 ConnectivityManager.TYPE_WIFI -> TYPE_WIFI

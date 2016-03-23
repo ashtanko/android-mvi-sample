@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'realm-android'
 
 android {
     def mainConfig = rootProject.extensions.getByName("ext")
@@ -64,10 +65,13 @@ dependencies {
 
 buildscript {
     ext.kotlin_version = '1.0.1'
+    ext.realm_version = '0.88.2'
     repositories {
+        jcenter()
         mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "io.realm:realm-gradle-plugin:$realm_version"
     }
 }

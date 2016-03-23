@@ -2,20 +2,19 @@ language: android
 
 sudo: false
 
-jdk:
-  - oraclejdk8
-
 android:
   components:
     - build-tools-22.0.1
     - android-23
     - extra-android-m2repository
+    - extra-android-m2repository
+    - extra-android-support
 
 before_install:
  - chmod +x gradlew
 
 script:
-  - ./gradlew clean check
+    ./gradlew build
 
 cache:
   directories:
