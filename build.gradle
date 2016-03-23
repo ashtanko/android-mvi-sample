@@ -1,3 +1,4 @@
+apply from: 'mainbuild/ci.gradle'
 apply from: 'mainbuild/dependencies.gradle'
 
 buildscript {
@@ -19,9 +20,5 @@ allprojects {
 
 task wrapper(type: Wrapper) {
     description 'Creates the gradle wrapper.'
-    gradleVersion '2.4'
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    gradleVersion '2.10'
 }
