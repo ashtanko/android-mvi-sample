@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.twere.presentation">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.twere.android.clean.way.MainApp"
         android:allowBackup="true"
@@ -9,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.twere.android.clean.way.view.activity.MainActivity">
+        <activity android:name="com.twere.android.clean.way.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
