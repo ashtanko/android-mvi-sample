@@ -1,1 +1,1 @@
-# Android Clean Kotlin
+# Android Clean Kotlin [![Build Status](https://travis-ci.org/AdamLuisSean/Android-Clean-Kotlin.svg?branch=master)](https://travis-ci.org/AdamLuisSean/Android-Clean-Kotlin)
