@@ -18,6 +18,9 @@ android {
         versionName mainConfig.getAt("androidVersionName")
         buildConfigField STRING, API_URL, '"https://dribbble.com/"'
         buildConfigField STRING, ENDPOINT, '"https://api.dribbble.com/v1/"'
+        buildConfigField "String", "DRIBBBLE_CLIENT_ID", "\"${dribbble_client_id}\""
+        buildConfigField "String", "DRIBBBLE_CLIENT_SECRET", "\"${dribbble_client_secret}\""
+        buildConfigField "String", "DRIBBBLE_CLIENT_ACCESS_TOKEN", "\"${dribbble_client_access_token}\""
     }
 
     packagingOptions {

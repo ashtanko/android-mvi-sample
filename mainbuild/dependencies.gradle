@@ -54,6 +54,6 @@ ext {
             cardview    : "com.android.support:cardview-v7:$sdkVersion",
             design      : "com.android.support:design:$sdkVersion",
             support     : "com.android.support:support-v4:$sdkVersion",
-            kotterknife     : "com.jakewharton:kotterknife:$kotterknifeVersion",
+            kotterknife : "com.jakewharton:kotterknife:$kotterknifeVersion",
     ]
 }
