@@ -1,4 +1,5 @@
 package com.twere.android.clean.way.mvp.presenter
 
-interface BasePresenter {
+interface BasePresenter<T> {
+    fun init(view: T)
 }
