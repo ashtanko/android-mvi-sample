@@ -6,11 +6,14 @@ import android.support.design.widget.CoordinatorLayout
 import android.support.v7.widget.RecyclerView
 import butterknife.bindView
 import com.twere.android.clean.way.di.component.ApplicationComponent
+import com.twere.android.clean.way.mvp.impl.MainPresenterImpl
 import com.twere.android.clean.way.mvp.view.MainView
 import com.twere.android.clean.way.util.NetworkUtil
-import com.twere.android.clean.way.util.log
 import com.twere.data.MainItem
+import com.twere.data.api.dribbble.DribbleService
+import com.twere.data.util.log
 import com.twere.presentation.R
+import retrofit2.Retrofit
 import javax.inject.Inject
 
 class MainActivity : BaseDrawerActivity(), MainView {
@@ -19,11 +22,15 @@ class MainActivity : BaseDrawerActivity(), MainView {
     @Inject
     lateinit var network: NetworkUtil
 
- /*   @Inject
+    @Inject
     lateinit var api: DribbleService
 
+    @Inject
+    lateinit var presenter: MainPresenterImpl
 
-*/
+    @Inject
+    lateinit var retrofit: Retrofit
+
 
     val rv_news: RecyclerView by bindView(R.id.rv_news)
     val cl_content: CoordinatorLayout by bindView(R.id.cl_content)
@@ -40,9 +47,11 @@ class MainActivity : BaseDrawerActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-       /* presenter.init(this)
+        presenter.init(this)
         presenter.resume(api)
-        presenter.getFeed(0, 30)*/
+//      presenter.getFeed(0, 30)
+
+        log(retrofit.baseUrl())
 
     }
 

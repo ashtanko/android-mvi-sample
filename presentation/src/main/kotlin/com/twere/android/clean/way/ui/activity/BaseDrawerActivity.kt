@@ -25,6 +25,14 @@ abstract class BaseDrawerActivity : BaseActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (drawer_layout.isDrawerOpen(nav_view)) {
+            drawer_layout.closeDrawer(nav_view)
+        }else{
+            finish()
+        }
+    }
 
     fun setupHeader() {
 

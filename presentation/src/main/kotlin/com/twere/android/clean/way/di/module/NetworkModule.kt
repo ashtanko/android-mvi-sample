@@ -1,20 +1,21 @@
 package com.twere.android.clean.way.di.module
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.twere.data.api.dribbble.DribbleService
-import com.twere.presentation.BuildConfig
+import com.twere.data.util.log
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-
-    val NETWORK_TIMEOUT_SECONDS = 60L
 
     @Provides
     @Singleton
@@ -38,13 +39,20 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideNetworkTimeout(): Long = NETWORK_TIMEOUT_SECONDS
+    fun provideClient(networkTimeoutSecond: Long): OkHttpClient {
+        val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
+        okHttpClientBuilder.readTimeout(networkTimeoutSecond, TimeUnit.SECONDS)
+        okHttpClientBuilder.connectTimeout(networkTimeoutSecond, TimeUnit.SECONDS)
+        return okHttpClientBuilder.build()
+    }
 
     @Provides
     @Singleton
-    fun provideBaseUrl(): String = BuildConfig.API_URL
+    fun provideGson(): Gson = GsonBuilder().create()
 
     @Provides
-    @Singleton
-    fun provideEndpoint(): String = BuildConfig.ENDPOINT
+    fun provideLogger(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> log(message) })
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.twere.android.clean.way.util
+package com.twere.data.util
 
 import android.util.Log
 import java.util.*
