@@ -28,6 +28,14 @@ ext {
     okhttp3Version = '3.1.2'
     retrofit2AdapterVersion = '2.0.0-beta4'
 
+    //testing
+    junitVersion = '4.12'
+    robolectricVersion = '3.0'
+    mockitoVersion = '1.10.19'
+    robolectricShadowsVersion = '3.0'
+    powermockVersion = '1.6.4'
+    espressoVersion = '2.2.1'
+    supportTestRunnerVersion = '0.4.1'
 
     commonDependencies = [
             dagger         : "com.google.dagger:dagger:$daggerVersion",
@@ -39,12 +47,33 @@ ext {
             rxandroid      : "io.reactivex:rxandroid:$rxandroidVersion",
     ]
 
+    commonTestDependencies = [
+            junit             : "junit:junit:$junitVersion",
+            robolectric       : "org.robolectric:robolectric:$robolectricVersion",
+            mockito           : "org.mockito:mockito-core:$mockitoVersion",
+            robolectricShadows: "org.robolectric:shadows-support-v4:$robolectricShadowsVersion",
+
+            powermockJunit    : "org.powermock:powermock-module-junit4:$powermockVersion",
+            powermockJunitRule: "org.powermock:powermock-module-junit4-rule:$powermockVersion",
+            powermockMockito  : "org.powermock:powermock-api-mockito:$powermockVersion",
+            powermockXstream  : "org.powermock:powermock-classloading-xstream:$powermockVersion",
+
+            supportTestRunner : "com.android.support.test:runner:$supportTestRunnerVersion",
+            supportTestRules  : "com.android.support.test:rules:$supportTestRunnerVersion",
+            espresso          : "com.android.support.test.espresso:espresso-core:$espressoVersion",
+    ]
+
     dataLayerDependencies = [
             gson              : "com.google.code.gson:gson:$gsonVersion",
             retrofit2         : "com.squareup.retrofit2:retrofit:$retrofit2Version",
             okhttp3           : "com.squareup.okhttp3:okhttp:$okhttp3Version",
+            okhttp3Logging    : "com.squareup.okhttp3:logging-interceptor:$okhttp3Version",
             retrofit2Converter: "com.squareup.retrofit2:converter-gson:$retrofit2Version",
             retrofit2Adapter  : "com.squareup.retrofit2:adapter-rxjava:$retrofit2AdapterVersion"
+    ]
+
+    dataLayerTestDependencies = [
+
     ]
 
     presentationLayerDependencies = [
@@ -55,5 +84,9 @@ ext {
             design      : "com.android.support:design:$sdkVersion",
             support     : "com.android.support:support-v4:$sdkVersion",
             kotterknife : "com.jakewharton:kotterknife:$kotterknifeVersion",
+    ]
+
+    presentationLayerTestDependencies = [
+
     ]
 }

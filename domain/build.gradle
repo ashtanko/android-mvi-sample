@@ -12,6 +12,10 @@ sourceSets {
     main {
         compileClasspath += configurations.provided
         java.srcDirs += 'src/main/kotlin'
+
+    }
+    test {
+        java.srcDirs += 'src/test/kotlin'
     }
 }
 

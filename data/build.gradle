@@ -12,6 +12,10 @@ android {
         minSdkVersion mainConfig.getAt("minSdkVersion")
         targetSdkVersion mainConfig.getAt("targetSdkVersion")
         versionCode mainConfig.getAt("androidVersionCode")
+
+        buildConfigField "String", "DRIBBBLE_CLIENT_ID", "\"${dribbble_client_id}\""
+        buildConfigField "String", "DRIBBBLE_CLIENT_SECRET", "\"${dribbble_client_secret}\""
+        buildConfigField "String", "DRIBBBLE_CLIENT_ACCESS_TOKEN", "\"${dribbble_client_access_token}\""
     }
     buildTypes {
         release {
@@ -38,6 +42,7 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
     }
 }
 
@@ -45,6 +50,7 @@ dependencies {
 
     def data = rootProject.ext.dataLayerDependencies
     def common = rootProject.ext.commonDependencies
+    def commonTest = rootProject.ext.commonTestDependencies
 
     //common
     compile common.kotlin
@@ -57,10 +63,16 @@ dependencies {
     compile data.gson
     compile data.retrofit2
     compile data.okhttp3
+    compile data.okhttp3Logging
     compile data.retrofit2Converter
     compile data.retrofit2Adapter
     //modules
     compile project(':domain')
+
+    //testing
+    testCompile commonTest.junit
+    testCompile commonTest.mockito
+    testCompile common.kotlin
 }
 
 buildscript {
