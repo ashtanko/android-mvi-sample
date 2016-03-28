@@ -18,7 +18,6 @@ import javax.inject.Inject
 
 class MainActivity : BaseDrawerActivity(), MainView {
 
-
     @Inject
     lateinit var network: NetworkUtil
 
@@ -30,7 +29,6 @@ class MainActivity : BaseDrawerActivity(), MainView {
 
     @Inject
     lateinit var retrofit: Retrofit
-
 
     val rv_news: RecyclerView by bindView(R.id.rv_news)
     val cl_content: CoordinatorLayout by bindView(R.id.cl_content)
@@ -49,10 +47,9 @@ class MainActivity : BaseDrawerActivity(), MainView {
 
         presenter.init(this)
         presenter.resume(api)
-//      presenter.getFeed(0, 30)
+        //presenter.getFeed(0, 30)
 
         log(retrofit.baseUrl())
-
     }
 
     override fun initList(list: List<MainItem>) {

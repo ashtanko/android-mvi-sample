@@ -2,6 +2,8 @@ package com.twere.data.prefs
 
 import android.content.SharedPreferences
 import com.twere.data.BuildConfig
+import com.twere.data.net.DribbleAuthInterceptor
+import okhttp3.OkHttpClient
 import java.util.*
 
 class DribbblePrefs {
@@ -26,6 +28,16 @@ class DribbblePrefs {
     private var userAvatar: String? = null
     private var userType: String? = null
     private var loginStatusListeners: MutableList<DribbbleLoginStatusListener>? = null
+
+    private fun createApi() {
+        val client: OkHttpClient = OkHttpClient.Builder()
+                .addInterceptor(DribbleAuthInterceptor(getAccessToken()))
+                .build()
+    }
+
+    private fun getAccessToken(): String {
+        return BuildConfig.DRIBBBLE_CLIENT_ACCESS_TOKEN
+    }
 
 }
 

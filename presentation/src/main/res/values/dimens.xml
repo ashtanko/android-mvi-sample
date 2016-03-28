@@ -9,4 +9,5 @@
     <dimen name="z_card">2dp</dimen>
     <dimen name="touch_raise">6dp</dimen>
     <dimen name="padding_normal">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
