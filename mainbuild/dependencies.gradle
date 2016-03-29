@@ -38,6 +38,10 @@ ext {
     supportTestRunnerVersion = '0.4.1'
     dexmakerVersion = '1.2'
 
+    //images
+    glideVersion = '3.7.0'
+    picassoVersion = ''
+
     commonDependencies = [
             dagger         : "com.google.dagger:dagger:$daggerVersion",
             daggerCompiler : "com.google.dagger:dagger-compiler:$daggerVersion",
@@ -87,6 +91,7 @@ ext {
             design      : "com.android.support:design:$sdkVersion",
             support     : "com.android.support:support-v4:$sdkVersion",
             kotterknife : "com.jakewharton:kotterknife:$kotterknifeVersion",
+            glide       : "com.github.bumptech.glide:glide:$glideVersion",
     ]
 
     presentationLayerTestDependencies = [

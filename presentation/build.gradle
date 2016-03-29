@@ -74,6 +74,7 @@ dependencies {
     compile presentation.design
     compile presentation.support
     compile presentation.kotterknife
+    compile presentation.glide
 
     //modules
     compile project(':data')
