@@ -31,11 +31,12 @@ ext {
     //testing
     junitVersion = '4.12'
     robolectricVersion = '3.0'
-    mockitoVersion = '1.10.19'
+    mockitoVersion = '2.0.39-beta'
     robolectricShadowsVersion = '3.0'
     powermockVersion = '1.6.4'
     espressoVersion = '2.2.1'
     supportTestRunnerVersion = '0.4.1'
+    dexmakerVersion = '1.2'
 
     commonDependencies = [
             dagger         : "com.google.dagger:dagger:$daggerVersion",
@@ -51,6 +52,8 @@ ext {
             junit             : "junit:junit:$junitVersion",
             robolectric       : "org.robolectric:robolectric:$robolectricVersion",
             mockito           : "org.mockito:mockito-core:$mockitoVersion",
+            dexmaker          : "com.google.dexmaker:dexmaker:$dexmakerVersion",
+            dexmakerMockito   : "com.google.dexmaker:dexmaker-mockito:$dexmakerVersion",
             robolectricShadows: "org.robolectric:shadows-support-v4:$robolectricShadowsVersion",
 
             powermockJunit    : "org.powermock:powermock-module-junit4:$powermockVersion",
