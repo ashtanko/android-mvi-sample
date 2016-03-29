@@ -8,4 +8,7 @@
     <color name="btn_context_menu_normal">#ffffff</color>
     <color name="background_dark">#ff333333</color>
     <color name="mid_grey">#40808080</color>
+    <color name="text_primary_light">#ffffffff</color>
+    <color name="dribbble">#fff06292</color>
+    <color name="content_placeholder">#ffe0e0e0</color>
 </resources>

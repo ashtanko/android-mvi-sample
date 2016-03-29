@@ -8,6 +8,7 @@ import butterknife.bindView
 import com.twere.android.clean.way.di.component.ApplicationComponent
 import com.twere.android.clean.way.mvp.impl.MainPresenterImpl
 import com.twere.android.clean.way.mvp.view.MainView
+import com.twere.android.clean.way.ui.fragment.MainFragment
 import com.twere.android.clean.way.util.NetworkUtil
 import com.twere.data.MainItem
 import com.twere.data.api.dribbble.DribbleService
@@ -44,15 +45,20 @@ class MainActivity : BaseDrawerActivity(), MainView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        testFragmentUi()
         presenter.init(this)
         presenter.resume(api)
         //presenter.getFeed(0, 30)
 
         log(retrofit.baseUrl())
+
     }
 
     override fun initList(list: List<MainItem>) {
         log(list.size)
+    }
+
+    fun testFragmentUi() {
+        supportFragmentManager.beginTransaction().replace(R.id.cl_content, MainFragment()).commit()
     }
 }
