@@ -1,18 +1,16 @@
 package com.twere.android.clean.way.ui.activity
 
-import android.support.design.widget.NavigationView
-import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import butterknife.bindView
+import com.bumptech.glide.Glide
+import com.twere.android.clean.way.util.CircleTransform
 import com.twere.presentation.R
+import kotlinx.android.synthetic.main.activity_drawer.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 abstract class BaseDrawerActivity : BaseActivity() {
-
-    val drawer_layout: DrawerLayout by bindView(R.id.drawer_layout)
-    val nav_view: NavigationView by bindView(R.id.nav_view)
-
 
     override fun setContentView(layoutResID: Int) {
         super.setContentViewWithoutInject(R.layout.activity_drawer)
@@ -26,15 +24,32 @@ abstract class BaseDrawerActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         if (drawer_layout.isDrawerOpen(nav_view)) {
             drawer_layout.closeDrawer(nav_view)
-        }else{
-            finish()
+        } else {
+            super.onBackPressed()
         }
     }
 
-    fun setupHeader() {
+    private fun setupHeader() {
+        val headerLayout: View = nav_view.inflateHeaderView(R.layout.nav_header_main)
 
+        iv_avatar_profile.setOnClickListener {
+            onAvatarClick()
+        }
+
+        ll_header.setOnClickListener {
+            onHeaderClick()
+        }
+
+        Glide.with(this).load(R.drawable.android_wear).transform(CircleTransform(this)).into(iv_avatar_profile)
+    }
+
+    private fun onAvatarClick() {
+        drawer_layout.closeDrawer(Gravity.LEFT)
+    }
+
+    private fun onHeaderClick() {
+        drawer_layout.closeDrawer(Gravity.LEFT)
     }
 }

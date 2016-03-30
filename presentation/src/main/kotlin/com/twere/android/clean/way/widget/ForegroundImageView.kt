@@ -85,5 +85,4 @@ open class ForegroundImageView(context: Context?, attrs: AttributeSet?) : ImageV
             invalidate()
         }
     }
-
 }

@@ -48,6 +48,10 @@ class MainPresenterImpl : MainPresenter {
         }
     }
 
+    fun auth(){
+
+    }
+
     fun getFeedObservable(page: Int, pageSize: Int): Observable<List<DribbleItem>>? {
         return api.getPopular(page, pageSize).asObservable()
     }

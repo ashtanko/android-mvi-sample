@@ -1,9 +1,13 @@
 package com.twere.data.prefs
 
 import android.content.SharedPreferences
+import com.google.gson.GsonBuilder
 import com.twere.data.BuildConfig
+import com.twere.data.api.dribbble.DribbleService
 import com.twere.data.net.DribbleAuthInterceptor
 import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 class DribbblePrefs {
@@ -28,11 +32,22 @@ class DribbblePrefs {
     private var userAvatar: String? = null
     private var userType: String? = null
     private var loginStatusListeners: MutableList<DribbbleLoginStatusListener>? = null
+    private var api: DribbleService? = null
 
     private fun createApi() {
         val client: OkHttpClient = OkHttpClient.Builder()
                 .addInterceptor(DribbleAuthInterceptor(getAccessToken()))
                 .build()
+
+        api = Retrofit.Builder()
+                .baseUrl(DRIBBBLE_ENDPOINT)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory
+                        .create(GsonBuilder().
+                                setDateFormat(DRIBBBLE_DATE_FORMAT)
+                                .create()))
+                .build()
+                .create(DribbleService::class.java)
     }
 
     private fun getAccessToken(): String {

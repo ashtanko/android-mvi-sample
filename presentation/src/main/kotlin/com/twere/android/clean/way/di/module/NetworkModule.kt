@@ -3,7 +3,7 @@ package com.twere.android.clean.way.di.module
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.twere.data.api.dribbble.DribbleService
-import com.twere.data.prefs.DATE_FORMAT
+import com.twere.data.prefs.DRIBBBLE_DATE_FORMAT
 import com.twere.data.util.log
 import dagger.Module
 import dagger.Provides
@@ -48,18 +48,18 @@ class NetworkModule {
         return okHttpClientBuilder.build()
     }
 
- /*   @Provides
+/*    @Provides
     @Singleton
     fun provideDribbleClient(): OkHttpClient {
-        val okHttpClientBuilder: OkHttpClient.Builder =
+        val okHttpDribbleClientBuilder: OkHttpClient.Builder =
                 OkHttpClient.Builder()
                         .addInterceptor(DribbleAuthInterceptor(BuildConfig.DRIBBBLE_CLIENT_ACCESS_TOKEN))
-        return okHttpClientBuilder.build()
+        return okHttpDribbleClientBuilder.build()
     }*/
 
     @Provides
     @Singleton
-    fun provideGson(): Gson = GsonBuilder().setDateFormat(DATE_FORMAT).create()
+    fun provideGson(): Gson = GsonBuilder().setDateFormat(DRIBBBLE_DATE_FORMAT).create()
 
     @Provides
     fun provideLogger(): HttpLoggingInterceptor {

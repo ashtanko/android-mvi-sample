@@ -6,19 +6,31 @@
     android:clickable="true">
 
     <LinearLayout
-        android:id="@+id/vGlobalMenuHeader"
+        android:id="@+id/ll_header"
+        android:baselineAligned="false"
+        android:clickable="true"
+        android:clipToPadding="false"
+        android:focusable="true"
+        android:foreground="?android:selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivMenuUserProfilePhoto"
+        <com.twere.android.clean.way.widget.CircularImageView
+            android:id="@+id/iv_avatar_profile"
             android:layout_width="@dimen/global_menu_avatar_size"
             android:layout_height="@dimen/global_menu_avatar_size"
-            android:background="@drawable/ic_dribbble_ball"
-            android:layout_margin="12dp" />
+            android:layout_margin="12dp"
+            android:layout_rowSpan="2"
+            android:foreground="@drawable/avatar_ripple"
+            android:padding="@dimen/avatar_padding"
+            android:src="@drawable/avatar_placeholder"
+            android:stateListAnimator="@animator/raise"
+            android:textColorHighlight="@color/dribbble"
+            android:textColorLink="@color/dribbble_links" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
