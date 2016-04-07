@@ -10,31 +10,31 @@ import com.twere.presentation.R
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    abstract fun injectDependencies(appComponent: ApplicationComponent)
-    abstract fun getLayout(): Int
-    val mToolbar: Toolbar by bindView(R.id.toolbar)
+  abstract fun injectDependencies(appComponent: ApplicationComponent)
+  abstract fun getLayout(): Int
+  val mToolbar: Toolbar by bindView(R.id.toolbar)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(getLayout())
-        injectDependencies(MainApp.appComponent)
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(getLayout())
+    injectDependencies(MainApp.appComponent)
+  }
 
-    override fun setContentView(layoutResID: Int) {
-        super.setContentView(layoutResID)
-        bindViews()
-    }
+  override fun setContentView(layoutResID: Int) {
+    super.setContentView(layoutResID)
+    bindViews()
+  }
 
-    fun bindViews() {
-        setupToolbar()
-    }
+  fun bindViews() {
+    setupToolbar()
+  }
 
-    protected fun setupToolbar() {
-        setSupportActionBar(mToolbar)
-        mToolbar.setNavigationIcon(R.drawable.ic_menu_white)
-    }
+  protected fun setupToolbar() {
+    setSupportActionBar(mToolbar)
+    mToolbar.setNavigationIcon(R.drawable.ic_menu_white)
+  }
 
-    fun setContentViewWithoutInject(layoutResId: Int) {
-        super.setContentView(layoutResId)
-    }
+  fun setContentViewWithoutInject(layoutResId: Int) {
+    super.setContentView(layoutResId)
+  }
 }

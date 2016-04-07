@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class HNItem(
 
-        @SerializedName("items")
-        @Expose val items: List<Int>,
+    @SerializedName("items")
+    @Expose val items: List<Int>,
 
-        @SerializedName("profiles")
-        @Expose
-        val profiles: List<String>) {
+    @SerializedName("profiles")
+    @Expose
+    val profiles: List<String>) {
 
 }

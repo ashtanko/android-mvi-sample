@@ -12,13 +12,13 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = arrayOf(
-        ApplicationModule::class,
-        NetworkModule::class,
-        RealmModule::class,
-        HostModule::class
+    ApplicationModule::class,
+    NetworkModule::class,
+    RealmModule::class,
+    HostModule::class
 ))
 interface ApplicationComponent {
-    fun inject(app: MainApp)
-    fun inject(activity: MainActivity)
-    fun inject(fragment: MainFragment)
+  fun inject(app: MainApp)
+  fun inject(activity: MainActivity)
+  fun inject(fragment: MainFragment)
 }

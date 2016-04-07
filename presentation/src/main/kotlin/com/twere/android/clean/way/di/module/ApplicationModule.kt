@@ -12,23 +12,23 @@ import javax.inject.Singleton
 @Module
 class ApplicationModule {
 
-    @Provides
-    @Singleton
-    fun provideContext(): Context = MainApp.instance
+  @Provides
+  @Singleton
+  fun provideContext(): Context = MainApp.instance
 
-    @Provides
-    @Singleton
-    fun provideResources(context: Context): Resources = context.resources
+  @Provides
+  @Singleton
+  fun provideResources(context: Context): Resources = context.resources
 
-    @Provides
-    @Singleton
-    fun provideNetworkUtil(connectivityManager: ConnectivityManager): NetworkUtil {
-        return NetworkUtil(connectivityManager)
-    }
+  @Provides
+  @Singleton
+  fun provideNetworkUtil(connectivityManager: ConnectivityManager): NetworkUtil {
+    return NetworkUtil(connectivityManager)
+  }
 
-    @Provides
-    @Singleton
-    fun provideConnectivityManager(): ConnectivityManager {
-        return MainApp.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    }
+  @Provides
+  @Singleton
+  fun provideConnectivityManager(): ConnectivityManager {
+    return MainApp.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+  }
 }

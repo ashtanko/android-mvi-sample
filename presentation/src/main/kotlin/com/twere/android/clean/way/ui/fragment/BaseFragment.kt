@@ -10,17 +10,18 @@ import com.twere.android.clean.way.di.component.ApplicationComponent
 
 abstract class BaseFragment : Fragment() {
 
-    abstract fun injectDependencies(appComponent: ApplicationComponent)
-    abstract fun getLayout(): Int
-    protected var rootView: View? = null
+  abstract fun injectDependencies(appComponent: ApplicationComponent)
+  abstract fun getLayout(): Int
+  protected var rootView: View? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        rootView = inflater?.inflate(getLayout(), container, false)
-        return rootView;
-    }
+  override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+      savedInstanceState: Bundle?): View? {
+    rootView = inflater?.inflate(getLayout(), container, false)
+    return rootView;
+  }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        injectDependencies(MainApp.appComponent)
-    }
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
+    injectDependencies(MainApp.appComponent)
+  }
 }

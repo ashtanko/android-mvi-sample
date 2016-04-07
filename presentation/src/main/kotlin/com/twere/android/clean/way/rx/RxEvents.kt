@@ -9,28 +9,28 @@ import rx.subjects.BehaviorSubject
 import rx.subjects.PublishSubject
 
 object RxEvents {
-    fun text(editText: EditText): Observable<String> {
-        val behaviourSubject = BehaviorSubject.create(editText.text.toString())
-        editText.addTextChangedListener(object : TextWatcher {
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            }
+  fun text(editText: EditText): Observable<String> {
+    val behaviourSubject = BehaviorSubject.create(editText.text.toString())
+    editText.addTextChangedListener(object : TextWatcher {
+      override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+      }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+      override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+      }
 
-            override fun afterTextChanged(s: Editable) {
-                behaviourSubject.onNext(s.toString())
-            }
-        })
-        return behaviourSubject
-    }
+      override fun afterTextChanged(s: Editable) {
+        behaviourSubject.onNext(s.toString())
+      }
+    })
+    return behaviourSubject
+  }
 
-    fun click(view: View): Observable<Any> {
-        val subject: PublishSubject<Any> = PublishSubject.create()
-        view.setOnClickListener({ subject.onNext(Any()) })
-        return subject
-    }
+  fun click(view: View): Observable<Any> {
+    val subject: PublishSubject<Any> = PublishSubject.create()
+    view.setOnClickListener({ subject.onNext(Any()) })
+    return subject
+  }
 
-    // TODO: Add more events
+  // TODO: Add more events
 }
 

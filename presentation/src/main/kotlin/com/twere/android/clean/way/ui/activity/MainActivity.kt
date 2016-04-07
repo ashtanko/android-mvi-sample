@@ -16,32 +16,31 @@ import javax.inject.Inject
 
 class MainActivity : BaseDrawerActivity(), MainView {
 
-    @Inject lateinit var network: NetworkUtil
-    @Inject lateinit var api: DribbleService
-    @Inject lateinit var presenter: MainPresenterImpl
-    @Inject lateinit var retrofit: Retrofit
-    @Inject lateinit var okhttp: OkHttpClient
+  @Inject lateinit var network: NetworkUtil
+  @Inject lateinit var api: DribbleService
+  @Inject lateinit var presenter: MainPresenterImpl
+  @Inject lateinit var retrofit: Retrofit
+  @Inject lateinit var okhttp: OkHttpClient
 
+  override fun getLayout(): Int {
+    return R.layout.activity_main
+  }
 
-    override fun getLayout(): Int {
-        return R.layout.activity_main
-    }
+  override fun injectDependencies(appComponent: ApplicationComponent) {
+    appComponent.inject(this)
+  }
 
-    override fun injectDependencies(appComponent: ApplicationComponent) {
-        appComponent.inject(this)
-    }
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    presenter.init(this)
+    presenter.resume(api)
+  }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        presenter.init(this)
-        presenter.resume(api)
-    }
+  override fun initList(list: List<MainItem>) {
+    log(list.size)
+  }
 
-    override fun initList(list: List<MainItem>) {
-        log(list.size)
-    }
-
-    fun testFragmentUi() {
-        supportFragmentManager.beginTransaction().replace(R.id.cl_content, MainFragment()).commit()
-    }
+  fun testFragmentUi() {
+    supportFragmentManager.beginTransaction().replace(R.id.cl_content, MainFragment()).commit()
+  }
 }

@@ -18,52 +18,53 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    @Provides
-    @Singleton
-    fun provideRetrofit(httpClient: OkHttpClient, baseUrl: String, converter: Converter.Factory): Retrofit {
-        return Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(converter)
-                .client(httpClient).build()
+  @Provides
+  @Singleton
+  fun provideRetrofit(httpClient: OkHttpClient, baseUrl: String,
+      converter: Converter.Factory): Retrofit {
+    return Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .addConverterFactory(converter)
+        .client(httpClient).build()
 
-    }
+  }
 
-    @Provides
-    @Singleton
-    fun provideService(retrofit: Retrofit): DribbleService {
-        return retrofit.create(DribbleService::class.java)
-    }
+  @Provides
+  @Singleton
+  fun provideService(retrofit: Retrofit): DribbleService {
+    return retrofit.create(DribbleService::class.java)
+  }
 
-    @Provides
-    @Singleton
-    fun provideConverter(gson: Gson): Converter.Factory = GsonConverterFactory.create(gson)
+  @Provides
+  @Singleton
+  fun provideConverter(gson: Gson): Converter.Factory = GsonConverterFactory.create(gson)
 
-    @Provides
-    @Singleton
-    fun provideClient(networkTimeoutSecond: Long): OkHttpClient {
-        val okHttpClientBuilder: OkHttpClient.Builder =
-                OkHttpClient.Builder()
-                        .readTimeout(networkTimeoutSecond, TimeUnit.SECONDS)
-                        .connectTimeout(networkTimeoutSecond, TimeUnit.SECONDS)
-        return okHttpClientBuilder.build()
-    }
+  @Provides
+  @Singleton
+  fun provideClient(networkTimeoutSecond: Long): OkHttpClient {
+    val okHttpClientBuilder: OkHttpClient.Builder =
+        OkHttpClient.Builder()
+            .readTimeout(networkTimeoutSecond, TimeUnit.SECONDS)
+            .connectTimeout(networkTimeoutSecond, TimeUnit.SECONDS)
+    return okHttpClientBuilder.build()
+  }
 
-/*    @Provides
-    @Singleton
-    fun provideDribbleClient(): OkHttpClient {
-        val okHttpDribbleClientBuilder: OkHttpClient.Builder =
-                OkHttpClient.Builder()
-                        .addInterceptor(DribbleAuthInterceptor(BuildConfig.DRIBBBLE_CLIENT_ACCESS_TOKEN))
-        return okHttpDribbleClientBuilder.build()
-    }*/
+  /*    @Provides
+      @Singleton
+      fun provideDribbleClient(): OkHttpClient {
+          val okHttpDribbleClientBuilder: OkHttpClient.Builder =
+                  OkHttpClient.Builder()
+                          .addInterceptor(DribbleAuthInterceptor(BuildConfig.DRIBBBLE_CLIENT_ACCESS_TOKEN))
+          return okHttpDribbleClientBuilder.build()
+      }*/
 
-    @Provides
-    @Singleton
-    fun provideGson(): Gson = GsonBuilder().setDateFormat(DRIBBBLE_DATE_FORMAT).create()
+  @Provides
+  @Singleton
+  fun provideGson(): Gson = GsonBuilder().setDateFormat(DRIBBBLE_DATE_FORMAT).create()
 
-    @Provides
-    fun provideLogger(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> log(message) })
-    }
+  @Provides
+  fun provideLogger(): HttpLoggingInterceptor {
+    return HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> log(message) })
+  }
 
 }
