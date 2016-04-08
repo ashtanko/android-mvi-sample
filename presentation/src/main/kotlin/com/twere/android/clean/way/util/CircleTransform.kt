@@ -20,7 +20,6 @@ class CircleTransform(context: Context) : BitmapTransformation(context) {
     return circleCrop(pool, toTransform)
   }
 
-  //TODO need rewrite the bad kotlin code
   fun circleCrop(pool: BitmapPool?, source: Bitmap?): Bitmap? {
     if (source == null) return null
 

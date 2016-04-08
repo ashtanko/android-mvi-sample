@@ -7,7 +7,7 @@ import com.twere.android.clean.way.mvp.view.MainView
 import com.twere.android.clean.way.ui.fragment.MainFragment
 import com.twere.android.clean.way.util.NetworkUtil
 import com.twere.data.MainItem
-import com.twere.data.api.dribbble.DribbleService
+import com.twere.data.api.dribbble.service.DribbleService
 import com.twere.data.util.log
 import com.twere.presentation.R
 import okhttp3.OkHttpClient

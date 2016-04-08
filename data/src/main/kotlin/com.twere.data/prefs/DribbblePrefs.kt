@@ -3,7 +3,7 @@ package com.twere.data.prefs
 import android.content.SharedPreferences
 import com.google.gson.GsonBuilder
 import com.twere.data.BuildConfig
-import com.twere.data.api.dribbble.DribbleService
+import com.twere.data.api.dribbble.service.DribbleService
 import com.twere.data.net.DribbleAuthInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

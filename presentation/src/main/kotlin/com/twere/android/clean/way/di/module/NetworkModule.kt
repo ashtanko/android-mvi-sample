@@ -2,7 +2,7 @@ package com.twere.android.clean.way.di.module
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.twere.data.api.dribbble.DribbleService
+import com.twere.data.api.dribbble.service.DribbleService
 import com.twere.data.prefs.DRIBBBLE_DATE_FORMAT
 import com.twere.data.util.log
 import dagger.Module

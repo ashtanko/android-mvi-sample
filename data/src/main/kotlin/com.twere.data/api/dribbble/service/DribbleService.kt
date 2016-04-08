@@ -1,4 +1,4 @@
-package com.twere.data.api.dribbble
+package com.twere.data.api.dribbble.service
 
 import com.twere.data.DribbleItem
 import retrofit2.http.GET

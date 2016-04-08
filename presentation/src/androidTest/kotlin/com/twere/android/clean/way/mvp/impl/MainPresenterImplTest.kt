@@ -3,7 +3,7 @@ package com.twere.android.clean.way.mvp.impl
 import com.twere.android.clean.way.mvp.view.MainView
 import com.twere.data.DribbleItem
 import com.twere.data.MainItem
-import com.twere.data.api.dribbble.DribbleService
+import com.twere.data.api.dribbble.service.DribbleService
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
