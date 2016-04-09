@@ -49,15 +49,6 @@ class NetworkModule {
     return okHttpClientBuilder.build()
   }
 
-  /*    @Provides
-      @Singleton
-      fun provideDribbleClient(): OkHttpClient {
-          val okHttpDribbleClientBuilder: OkHttpClient.Builder =
-                  OkHttpClient.Builder()
-                          .addInterceptor(DribbleAuthInterceptor(BuildConfig.DRIBBBLE_CLIENT_ACCESS_TOKEN))
-          return okHttpDribbleClientBuilder.build()
-      }*/
-
   @Provides
   @Singleton
   fun provideGson(): Gson = GsonBuilder().setDateFormat(DRIBBBLE_DATE_FORMAT).create()
@@ -66,5 +57,4 @@ class NetworkModule {
   fun provideLogger(): HttpLoggingInterceptor {
     return HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> log(message) })
   }
-
 }

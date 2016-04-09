@@ -2,6 +2,7 @@ package com.twere.android.clean.way.di.component
 
 import com.twere.android.clean.way.MainApp
 import com.twere.android.clean.way.di.module.ApplicationModule
+import com.twere.android.clean.way.di.module.DribbbleNetworkModule
 import com.twere.android.clean.way.di.module.HostModule
 import com.twere.android.clean.way.di.module.NetworkModule
 import com.twere.android.clean.way.di.module.RealmModule
@@ -15,7 +16,8 @@ import javax.inject.Singleton
     ApplicationModule::class,
     NetworkModule::class,
     RealmModule::class,
-    HostModule::class
+    HostModule::class,
+    DribbbleNetworkModule::class
 ))
 interface ApplicationComponent {
   fun inject(app: MainApp)
