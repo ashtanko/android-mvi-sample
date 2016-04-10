@@ -16,6 +16,8 @@ import javax.inject.Inject
 
 class MainActivity : BaseDrawerActivity(), MainView {
 
+  private val LOADER_ID = 101
+
   @Inject lateinit var network: NetworkUtil
   @Inject lateinit var api: DribbleService
   @Inject lateinit var presenter: MainPresenterImpl
@@ -32,7 +34,7 @@ class MainActivity : BaseDrawerActivity(), MainView {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    presenter.init(this)
+    presenter.onViewAttached(this)
     presenter.resume(api)
   }
 

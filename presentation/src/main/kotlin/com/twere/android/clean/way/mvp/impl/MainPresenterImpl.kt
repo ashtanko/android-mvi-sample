@@ -12,6 +12,7 @@ import javax.inject.Singleton
 @Singleton
 class MainPresenterImpl : MainPresenter {
 
+
   val api: DribbleService
 
   @Inject constructor(api: DribbleService) {
@@ -20,7 +21,7 @@ class MainPresenterImpl : MainPresenter {
 
   private var view: MainView? = null
 
-  override fun init(view: MainView) {
+  override fun onViewAttached(view: MainView) {
     this.view = view
   }
 
@@ -31,6 +32,14 @@ class MainPresenterImpl : MainPresenter {
   }
 
   override fun resume(api: DribbleService) {
+
+  }
+
+  override fun onDestroyed() {
+
+  }
+
+  override fun onViewDetached() {
 
   }
 
