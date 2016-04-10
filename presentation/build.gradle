@@ -76,6 +76,9 @@ dependencies {
     compile presentation.support
     compile presentation.kotterknife
     compile presentation.glide
+    compile presentation.ankoSdk
+    compile presentation.ankoSupport
+    compile presentation.ankoAppcompat
 
     //modules
     compile project(':data')
