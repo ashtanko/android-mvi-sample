@@ -44,13 +44,19 @@ ext {
   glideVersion = '3.7.0'
   picassoVersion = ''
 
+
+
+  //services
+  crashlyticsVersion = '2.5.5@aar'
+
   commonDependencies = [dagger         : "com.google.dagger:dagger:$daggerVersion",
                         daggerCompiler : "com.google.dagger:dagger-compiler:$daggerVersion",
                         kotlin         : "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
                         javaxAnnotation: "org.glassfish:javax.annotation:$javaxAnnotationVersion",
                         rxkotlin       : "io.reactivex:rxkotlin:$rxkotlinVersion",
                         rxjava         : "io.reactivex:rxjava:$rxjavaVersion",
-                        rxandroid      : "io.reactivex:rxandroid:$rxandroidVersion",]
+                        rxandroid      : "io.reactivex:rxandroid:$rxandroidVersion",
+                        crashlytics    : "com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion",]
 
   commonTestDependencies = [junit             : "junit:junit:$junitVersion",
                             robolectric       : "org.robolectric:robolectric:$robolectricVersion",

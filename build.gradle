@@ -2,41 +2,43 @@ apply from: 'mainbuild/ci.gradle'
 apply from: 'mainbuild/dependencies.gradle'
 
 buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0-alpha4'
-    }
+  repositories {
+    jcenter()
+    maven { url 'https://maven.fabric.io/public' }
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:2.1.0-beta1'
+    classpath 'io.fabric.tools:gradle:1.+'
+  }
 }
 
 allprojects {
-    ext {
-        androidApplicationId = 'com.twere.android.clean.way'
-        androidVersionCode = 1
-        androidVersionName = "1.0"
-        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
-        testApplicationId = 'com.twere.android.clean.way.test'
-    }
+  ext {
+    androidApplicationId = 'com.twere.android.clean.way'
+    androidVersionCode = 1
+    androidVersionName = "1.0"
+    testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    testApplicationId = 'com.twere.android.clean.way.test'
+  }
 }
 
 task wrapper(type: Wrapper) {
-    description 'Creates the gradle wrapper.'
-    gradleVersion '2.10'
+  description 'Creates the gradle wrapper.'
+  gradleVersion '2.10'
 }
 
 task runDomainUnitTests(dependsOn: [':domain:test']) {
-    description 'Run unit tests for both domain and data layers.'
+  description 'Run unit tests for both domain and data layers.'
 }
 
 task runDataUnitTests(dependsOn: [':data:cleanTestDebug', ':data:testDebug']) {
-    description 'Run unit tests for both domain and data layers.'
+  description 'Run unit tests for both domain and data layers.'
 }
 
 task runUnitTests(dependsOn: ['runDomainUnitTests', 'runDataUnitTests']) {
-    description 'Run unit tests for both domain and data layers.'
+  description 'Run unit tests for both domain and data layers.'
 }
 
 task runAcceptanceTests(dependsOn: [':presentation:connectedAndroidTest']) {
-    description 'Run application acceptance tests.'
+  description 'Run application acceptance tests.'
 }

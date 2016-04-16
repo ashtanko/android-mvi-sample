@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
+
 
 android {
     def mainConfig = rootProject.extensions.getByName("ext")
@@ -19,7 +21,6 @@ android {
         versionName mainConfig.getAt("androidVersionName")
         buildConfigField STRING, API_URL, '"https://dribbble.com/"'
         buildConfigField STRING, ENDPOINT, '"https://api.dribbble.com/v1/"'
-
     }
 
     packagingOptions {
@@ -66,6 +67,9 @@ dependencies {
     compile common.dagger
     provided common.javaxAnnotation
     kapt common.daggerCompiler
+    compile(common.crashlytics) {
+        transitive = true;
+    }
 
     //parent layer
     compile presentation.appcompat
@@ -79,6 +83,8 @@ dependencies {
     compile presentation.ankoSdk
     compile presentation.ankoSupport
     compile presentation.ankoAppcompat
+
+
 
     //modules
     compile project(':data')
@@ -115,5 +121,6 @@ buildscript {
 repositories {
     mavenCentral()
     maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    maven { url 'https://maven.fabric.io/public' }
 }
 
