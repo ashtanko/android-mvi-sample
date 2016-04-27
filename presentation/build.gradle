@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
 
-
 android {
     def mainConfig = rootProject.extensions.getByName("ext")
     def API_URL = 'API_URL'
