@@ -1,6 +1,6 @@
 language: android
 
-sudo: false
+sudo: required
 
 android:
   components:
@@ -10,19 +10,19 @@ android:
     - extra-android-m2repository
     - extra-android-support
 
-before_install:
- - chmod +x gradlew
- - pip install codecov
+#before_install:
+ #- chmod +x gradlew
+ #- pip install codecov
  
- after_success:
-  - codecov
+ #after_success:
+  #- codecov
 
-script:
-    ./gradlew build
+#script:
+   # ./gradlew build
 
-cache:
-  directories:
-    - $HOME/.gradle
+#cache:
+ # directories:
+  #  - $HOME/.gradle
     
 
 
