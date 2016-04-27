@@ -17,5 +17,4 @@ data class Team(
     @SerializedName("followings_count") @Expose var followingsCount: Long,
     @SerializedName("likes_count") @Expose var likesCount: Long,
     @SerializedName("likes_received_count") @Expose var likesReceivedCount: Long) {
-
 }

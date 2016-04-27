@@ -27,5 +27,4 @@ data class Shot(
     @SerializedName("projects_url") @Expose var projectsUrl: String,
     @SerializedName("rebounds_url") @Expose var reboundsUrl: String,
     @SerializedName("tags") @Expose var tags: Array<String>) {
-
 }
