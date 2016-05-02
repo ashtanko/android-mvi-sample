@@ -14,31 +14,15 @@ buildscript {
 
 allprojects {
   ext {
-    androidApplicationId = 'com.twere.android.clean.way'
+    androidApplicationId = 'com.twere.dribbblekotlin'
     androidVersionCode = 1
     androidVersionName = "1.0"
     testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
-    testApplicationId = 'com.twere.android.clean.way.test'
+    testApplicationId = 'com.twere.dribbblekotlin.test'
   }
 }
 
 task wrapper(type: Wrapper) {
   description 'Creates the gradle wrapper.'
   gradleVersion '2.10'
-}
-
-task runDomainUnitTests(dependsOn: [':domain:test']) {
-  description 'Run unit tests for both domain and data layers.'
-}
-
-task runDataUnitTests(dependsOn: [':data:cleanTestDebug', ':data:testDebug']) {
-  description 'Run unit tests for both domain and data layers.'
-}
-
-task runUnitTests(dependsOn: ['runDomainUnitTests', 'runDataUnitTests']) {
-  description 'Run unit tests for both domain and data layers.'
-}
-
-task runAcceptanceTests(dependsOn: [':presentation:connectedAndroidTest']) {
-  description 'Run application acceptance tests.'
 }
