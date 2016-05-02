@@ -14,6 +14,7 @@ class DribbbleApplication : MvpApplication() {
   override fun onCreate() {
     super.onCreate()
     instance = this
+    setupMainComponent()
   }
 
   private fun setupMainComponent() {
