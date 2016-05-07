@@ -10,12 +10,12 @@ import java.util.Date
 open class BucketRealm : RealmModel {
 
   @PrimaryKey
-open var id: Int = 0
-open var name: String = ""
-open var description: String = ""
-open var shotsCount: Int = 0
-open var createdAt: Date? = null
-open var updatedAt: Date? = null
-open var user: UserRealm? = null
+  open var id: Int = 0
+  open var name: String = ""
+  open var description: String = ""
+  open var shotsCount: Int = 0
+  open var createdAt: Date? = null
+  open var updatedAt: Date? = null
+  open var user: UserRealm? = null
 
 }

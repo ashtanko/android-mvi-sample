@@ -64,6 +64,7 @@ dependencies {
   //common
   compile common.kotlin
   compile common.rxkotlin
+  compile 'io.reactivex:rxandroid:1.2.0'
   compile common.dagger
   provided common.javaxAnnotation
   kapt common.daggerCompiler

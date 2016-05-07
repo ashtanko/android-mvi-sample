@@ -9,5 +9,4 @@ data class Follower(
     @SerializedName("id") @Expose var id: Long,
     @SerializedName("created_at") @Expose var createdAt: Date,
     @SerializedName("follower") @Expose var follower: User) {
-
 }

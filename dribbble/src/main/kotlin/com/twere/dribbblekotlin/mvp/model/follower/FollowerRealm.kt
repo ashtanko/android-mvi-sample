@@ -10,8 +10,8 @@ import java.util.Date
 open class FollowerRealm : RealmModel {
 
   @PrimaryKey
- open var id: Long = 0
- open var createdAt: Date? = null
- open var follower: UserRealm? = null
+  open var id: Long = 0
+  open var createdAt: Date? = null
+  open var follower: UserRealm? = null
 
 }

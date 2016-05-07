@@ -5,9 +5,10 @@ import com.twere.dribbble.R
 import com.twere.dribbblekotlin.DribbbleApplication
 import com.twere.dribbblekotlin.di.components.ApplicationComponent
 import com.twere.dribbblekotlin.mvp.common.MvpAppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.dribbble_toolbar.toolbar
 
-abstract class HomeActivity : MvpAppCompatActivity() {
+abstract class HomeActivity :  MvpAppCompatActivity() {
+
   abstract fun injectDependencies(appComponent: ApplicationComponent)
   abstract fun getLayout(): Int
 

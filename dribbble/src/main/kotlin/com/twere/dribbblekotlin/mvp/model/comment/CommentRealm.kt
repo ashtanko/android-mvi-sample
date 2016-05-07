@@ -10,11 +10,11 @@ import java.util.Date
 open class CommentRealm : RealmModel {
 
   @PrimaryKey
- open var id: Long = 0
- open var body: String = ""
- open var likesCount: Int = 0
- open var likesUrl: String = ""
- open var createdAt: Date? = null
- open var updatedAt: Date? = null
- open var user: UserRealm? = null
+  open var id: Long = 0
+  open var body: String = ""
+  open var likesCount: Int = 0
+  open var likesUrl: String = ""
+  open var createdAt: Date? = null
+  open var updatedAt: Date? = null
+  open var user: UserRealm? = null
 }

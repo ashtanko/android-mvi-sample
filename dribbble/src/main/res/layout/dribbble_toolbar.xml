@@ -7,14 +7,16 @@
     android:background="?attr/colorPrimary"
     app:elevation="@dimen/default_elevation"
     app:layout_scrollFlags="scroll|enterAlways"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    app:popupTheme="@style/AppTheme.PopupOverlay"
+    >
 
-    <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:scaleType="center"
-        android:src="@drawable/dribbble_logo" />
+  <ImageView
+      android:id="@+id/ivLogo"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center"
+      android:scaleType="center"
+      android:src="@drawable/dribbble_logo"
+      />
 
 </android.support.v7.widget.Toolbar>
