@@ -1,4 +1,4 @@
-# Android Clean Kotlin [![Build Status](https://travis-ci.org/AdamLuisSean/Android-Clean-Kotlin.svg?branch=master)](https://travis-ci.org/AdamLuisSean/Android-Clean-Kotlin) [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=571a08d6c92f11010044c1e1&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/571a08d6c92f11010044c1e1/build/latest)
+# Android Clean Kotlin [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=571a08d6c92f11010044c1e1&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/571a08d6c92f11010044c1e1/build/latest)
 
 # Realm
 ![Realm](preview/realm.png)
