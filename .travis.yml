@@ -1,28 +1,16 @@
 language: android
 
-sudo: required
-
 android:
   components:
+    # Update Android SDK Tools
+    - tools
+
     - build-tools-23.0.1
     - android-23
-    - extra-android-m2repository
-    - extra-android-m2repository
+
+    # Support library
     - extra-android-support
-
-#before_install:
- #- chmod +x gradlew
- #- pip install codecov
- 
- #after_success:
-  #- codecov
-
-#script:
-   # ./gradlew build
-
-#cache:
- # directories:
-  #  - $HOME/.gradle
+    - extra-android-m2repository
     
-
-
+script:
+    - chmod +x ./gradlew
