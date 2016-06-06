@@ -1,13 +1,13 @@
 package com.twere.dribbblekotlin.ui.activity
 
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.twere.dribbble.R
 import com.twere.dribbblekotlin.DribbbleApplication
 import com.twere.dribbblekotlin.di.components.ApplicationComponent
-import com.twere.dribbblekotlin.mvp.common.MvpAppCompatActivity
-import kotlinx.android.synthetic.main.dribbble_toolbar.toolbar
+import kotlinx.android.synthetic.main.activity_main.toolbar
 
-abstract class HomeActivity :  MvpAppCompatActivity() {
+abstract class HomeActivity :  AppCompatActivity() {
 
   abstract fun injectDependencies(appComponent: ApplicationComponent)
   abstract fun getLayout(): Int

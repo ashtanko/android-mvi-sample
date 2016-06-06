@@ -9,7 +9,7 @@ import com.twere.dribbble.R
 import com.twere.dribbblekotlin.util.CircleTransform
 import kotlinx.android.synthetic.main.activity_drawer.drawer_layout
 import kotlinx.android.synthetic.main.activity_drawer.nav_view
-import kotlinx.android.synthetic.main.dribbble_toolbar.toolbar
+import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.nav_header_main.iv_avatar_profile
 import kotlinx.android.synthetic.main.nav_header_main.ll_header
 

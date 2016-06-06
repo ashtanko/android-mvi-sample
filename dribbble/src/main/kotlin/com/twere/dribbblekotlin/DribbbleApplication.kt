@@ -1,10 +1,10 @@
 package com.twere.dribbblekotlin
 
-import com.arellomobile.mvp.MvpApplication
+import android.app.Application
 import com.twere.dribbblekotlin.di.components.ApplicationComponent
 import com.twere.dribbblekotlin.di.components.DaggerApplicationComponent
 
-class DribbbleApplication : MvpApplication() {
+class DribbbleApplication : Application() {
 
   companion object {
     @JvmStatic lateinit var instance: DribbbleApplication

@@ -69,10 +69,12 @@ dependencies {
   provided common.javaxAnnotation
   kapt common.daggerCompiler
 
-  //moxy
-  compile 'com.arello-mobile:moxy:0.4.3'
-  compile 'com.arello-mobile:moxy-android:0.4.3'
-  provided 'com.arello-mobile:moxy-compiler:0.4.3'
+  //mosby
+/*
+  compile 'com.hannesdorfmann.mosby:mvp:3.0.0-SNAPSHOT'
+  compile 'com.hannesdorfmann.mosby:viewstate:3.0.0-SNAPSHOT'
+
+*/
 
   //parent layer
   compile presentation.appcompat
