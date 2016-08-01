@@ -7,6 +7,7 @@ import android.view.ViewOutlineProvider
 class ViewUtil {
 
   val CIRCULAR_OUTLINE: ViewOutlineProvider = object : ViewOutlineProvider() {
+
     override fun getOutline(view: View, outline: Outline) {
       outline.setOval(view.paddingLeft,
           view.paddingTop,

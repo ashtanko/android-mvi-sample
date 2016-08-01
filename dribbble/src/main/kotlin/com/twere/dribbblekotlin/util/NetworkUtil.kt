@@ -2,13 +2,11 @@ package com.twere.dribbblekotlin.util
 
 import android.net.ConnectivityManager
 
-class NetworkUtil(connectivityManager: ConnectivityManager) {
+class NetworkUtil(private val connectivityManager: ConnectivityManager) {
 
   var TYPE_WIFI = 1
   var TYPE_MOBILE = 2
   var TYPE_NOT_CONNECTED = 0
-
-  private val connectivityManager: ConnectivityManager = connectivityManager
 
   fun getConnectivityStatus(): Int {
     val activeNetwork = connectivityManager.activeNetworkInfo

@@ -22,7 +22,7 @@ abstract class BaseDrawerActivity : HomeActivity() {
     bindViews()
     setupHeader()
     toolbar.setNavigationOnClickListener {
-      drawer_layout.openDrawer(Gravity.LEFT)
+      drawer_layout.openDrawer(Gravity.START)
     }
   }
 
@@ -49,10 +49,10 @@ abstract class BaseDrawerActivity : HomeActivity() {
   }
 
   private fun onAvatarClick() {
-    drawer_layout.closeDrawer(Gravity.LEFT)
+    drawer_layout.closeDrawer(Gravity.START)
   }
 
   private fun onHeaderClick() {
-    drawer_layout.closeDrawer(Gravity.LEFT)
+    drawer_layout.closeDrawer(Gravity.START)
   }
 }
