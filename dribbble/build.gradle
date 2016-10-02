@@ -116,7 +116,7 @@ dependencies {
 }
 
 buildscript {
-  ext.kotlin_version = '1.0.1'
+  ext.kotlin_version = '1.0.4'
   ext.realm_version = '0.89.1'
   repositories {
     jcenter()
