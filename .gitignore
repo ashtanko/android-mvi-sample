@@ -255,4 +255,4 @@ crashlytics-build.properties
 fabric.properties
 
 # Custom template
-/app/src/main/cpp/glm/
+config

@@ -3,14 +3,62 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'realm-android'
 
+def props = new Properties()
+props.load(new FileInputStream(rootProject.file('config/release.properties')))
+
+
 android {
     def mainConfig = rootProject.extensions.getByName("ext")
     def API_URL = 'API_URL'
     def ENDPOINT = 'ENDPOINT'
     def STRING = 'String'
 
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(output.outputFile.parent,
+                    output.outputFile.name.replace(".apk",
+                            "-${new Date().format('yyyyMMdd')}-${variant.versionName}.apk"))
+        }
+    }
+
     compileSdkVersion mainConfig["compileSdkVersion"]
     buildToolsVersion mainConfig["buildToolsVersion"]
+
+    signingConfigs {
+        if (rootProject.file('config/release.properties').exists()) {
+            debug {
+                storeFile file(rootProject.file('config/shtanko.jks'))
+                keyAlias props.keyAlias
+                storePassword props.keyStorePassword
+                keyPassword props.keyAliasPassword
+            }
+
+            release {
+                storeFile file(rootProject.file('config/shtanko.jks'))
+                keyAlias props.keyAlias
+                storePassword props.keyStorePassword
+                keyPassword props.keyAliasPassword
+            }
+        }
+    }
+
+    productFlavors {
+        x86 {
+            ndk {
+                abiFilter "x86"
+            }
+            versionCode = 0
+        }
+        armv7 {
+            ndk {
+                abiFilter "armeabi-v7a"
+            }
+            versionCode = 0
+        }
+        fat {
+            versionCode = 0
+        }
+    }
 
     defaultConfig {
         applicationId mainConfig["androidApplicationId"]
@@ -39,11 +87,28 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            debuggable true
+            jniDebuggable true
+            signingConfig signingConfigs.debug
+        }
+
         release {
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        foss {
+            debuggable false
+            jniDebuggable false
+            signingConfig signingConfigs.release
+        }
     }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
@@ -60,20 +125,20 @@ dependencies {
     def appTest = rootProject.ext.appTestDependencies
 
     compile app.kotlin
-    compile app.rxKotlin
+    //compile app.rxKotlin
     compile app.dagger
     provided app.javaxAnnotation
     kapt app.daggerCompiler
     compile app.androidSupportV4
-    compile app.palette
-    compile app.recyclerView
-    compile app.cardView
+    //compile app.palette
+    //compile app.recyclerView
+    //compile app.cardView
     compile app.design
     compile app.androidSupport
-    compile app.glide
-    compile app.ankoAppCompat
-    compile app.ankoSupport
-    compile app.ankoSDK15
+    //compile app.glide
+    //compile app.ankoAppCompat
+    //compile app.ankoSupport
+    //compile app.ankoSDK15
     compile app.gson
     compile app.retrofit
     compile app.okHttp
@@ -81,6 +146,7 @@ dependencies {
     compile app.retrofitConverterGson
     compile app.retrofitRxAdapter
 
+    /*
     //testing
     testCompile appTest.junit
     testCompile appTest.robolectric
@@ -88,12 +154,14 @@ dependencies {
     testCompile app.kotlin
 
     //android testing
+
     androidTestCompile appTest.dexmaker
     androidTestCompile appTest.dexmakerMockito
     androidTestCompile appTest.mockito
     androidTestCompile(appTest.junit) {
         exclude module: 'hamcrest-core'
     }
+    */
 }
 
 buildscript {
