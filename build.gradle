@@ -1,5 +1,5 @@
-apply from: 'mainbuild/ci.gradle'
-apply from: 'mainbuild/dependencies.gradle'
+apply from: 'dependencies/ci.gradle'
+apply from: 'dependencies/dependencies.gradle'
 
 buildscript {
   repositories {

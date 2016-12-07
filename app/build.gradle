@@ -9,17 +9,17 @@ android {
     def ENDPOINT = 'ENDPOINT'
     def STRING = 'String'
 
-    compileSdkVersion mainConfig.getAt("compileSdkVersion")
-    buildToolsVersion mainConfig.getAt("buildToolsVersion")
+    compileSdkVersion mainConfig["compileSdkVersion"]
+    buildToolsVersion mainConfig["buildToolsVersion"]
 
     defaultConfig {
-        applicationId mainConfig.getAt("androidApplicationId")
-        minSdkVersion mainConfig.getAt("minSdkVersion")
-        targetSdkVersion mainConfig.getAt("targetSdkVersion")
-        versionCode mainConfig.getAt("androidVersionCode")
-        versionName mainConfig.getAt("androidVersionName")
-        buildConfigField STRING, API_URL, '"https://dribbble.com/"'
-        buildConfigField STRING, ENDPOINT, '"https://api.dribbble.com/v1/"'
+        applicationId mainConfig["androidApplicationId"]
+        minSdkVersion mainConfig["minSdkVersion"]
+        targetSdkVersion mainConfig["targetSdkVersion"]
+        versionCode mainConfig["androidVersionCode"]
+        versionName mainConfig["androidVersionName"]
+        buildConfigField STRING, API_URL, '"https://domain.com/"'
+        buildConfigField STRING, ENDPOINT, '"https://domain.com/v1/"'
     }
 
     packagingOptions {
@@ -56,69 +56,49 @@ kapt {
 }
 
 dependencies {
-    def presentation = rootProject.ext.presentationLayerDependencies
-    def data = rootProject.ext.dataLayerDependencies
-    def common = rootProject.ext.commonDependencies
-    def commonTest = rootProject.ext.commonTestDependencies
+    def app = rootProject.ext.appDependencies
+    def appTest = rootProject.ext.appTestDependencies
 
-    //common
-    compile common.kotlin
-    compile common.rxkotlin
-    compile common.dagger
-    provided common.javaxAnnotation
-    kapt common.daggerCompiler
-
-    //mosby
-/*
-  compile 'com.hannesdorfmann.mosby:mvp:3.0.0-SNAPSHOT'
-  compile 'com.hannesdorfmann.mosby:viewstate:3.0.0-SNAPSHOT'
-
-*/
-
-    //parent layer
-    compile presentation.appcompat
-    compile presentation.palette
-    compile presentation.recyclerview
-    compile presentation.cardview
-    compile presentation.design
-    compile presentation.support
-    compile presentation.glide
-    compile presentation.ankoSdk
-    compile presentation.ankoSupport
-    compile presentation.ankoAppcompat
-
-    //data layer
-    compile data.gson
-    compile data.retrofit2
-    compile data.okhttp3
-    compile data.okhttp3Logging
-    compile data.retrofit2Converter
-    compile data.retrofit2Adapter
-    compile data.googleOauthClient
-    compile data.googleHttpClient
+    compile app.kotlin
+    compile app.rxKotlin
+    compile app.dagger
+    provided app.javaxAnnotation
+    kapt app.daggerCompiler
+    compile app.androidSupportV4
+    compile app.palette
+    compile app.recyclerView
+    compile app.cardView
+    compile app.design
+    compile app.androidSupport
+    compile app.glide
+    compile app.ankoAppCompat
+    compile app.ankoSupport
+    compile app.ankoSDK15
+    compile app.gson
+    compile app.retrofit
+    compile app.okHttp
+    compile app.okhttpLogging
+    compile app.retrofitConverterGson
+    compile app.retrofitRxAdapter
 
     //testing
-    testCompile commonTest.junit
-    testCompile commonTest.robolectric
-    testCompile commonTest.mockito
-    testCompile commonTest.robolectricShadows
-    testCompile commonTest.powermockJunit
-    testCompile common.kotlin
+    testCompile appTest.junit
+    testCompile appTest.robolectric
+    testCompile appTest.mockito
+    testCompile app.kotlin
 
     //android testing
-    androidTestCompile commonTest.dexmaker
-    androidTestCompile commonTest.dexmakerMockito
-    androidTestCompile commonTest.mockito
-    androidTestCompile(commonTest.junit) {
+    androidTestCompile appTest.dexmaker
+    androidTestCompile appTest.dexmakerMockito
+    androidTestCompile appTest.mockito
+    androidTestCompile(appTest.junit) {
         exclude module: 'hamcrest-core'
     }
-    compile 'io.reactivex:rxandroid:1.2.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
 }
 
 buildscript {
-    ext.kotlin_version = '1.0.4'
-    ext.realm_version = '0.89.1'
+    ext.kotlin_version = '1.0.5-2'
+    ext.realm_version = '2.2.1'
     repositories {
         jcenter()
         mavenCentral()
