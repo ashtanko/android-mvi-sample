@@ -1,0 +1,136 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'realm-android'
+
+android {
+  def mainConfig = rootProject.extensions.getByName("ext")
+  def API_URL = 'API_URL'
+  def ENDPOINT = 'ENDPOINT'
+  def STRING = 'String'
+
+  compileSdkVersion mainConfig.getAt("compileSdkVersion")
+  buildToolsVersion mainConfig.getAt("buildToolsVersion")
+
+  defaultConfig {
+    applicationId mainConfig.getAt("androidApplicationId")
+    minSdkVersion mainConfig.getAt("minSdkVersion")
+    targetSdkVersion mainConfig.getAt("targetSdkVersion")
+    versionCode mainConfig.getAt("androidVersionCode")
+    versionName mainConfig.getAt("androidVersionName")
+    buildConfigField STRING, API_URL, '"https://dribbble.com/"'
+    buildConfigField STRING, ENDPOINT, '"https://api.dribbble.com/v1/"'
+  }
+
+  packagingOptions {
+    exclude 'LICENSE.txt'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/ASL2.0'
+    exclude 'META-INF/NOTICE'
+    exclude 'META-INF/LICENSE'
+  }
+
+  lintOptions {
+    quiet true
+    abortOnError false
+    ignoreWarnings true
+    disable 'InvalidPackage'
+    disable 'OldTargetApi'
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+    test.java.srcDirs += 'src/test/kotlin'
+    androidTest.java.srcDirs += 'src/androidTest/kotlin'
+  }
+}
+
+kapt {
+  generateStubs = true
+}
+
+dependencies {
+  def presentation = rootProject.ext.presentationLayerDependencies
+  def data = rootProject.ext.dataLayerDependencies
+  def common = rootProject.ext.commonDependencies
+  def commonTest = rootProject.ext.commonTestDependencies
+
+  //common
+  compile common.kotlin
+  compile common.rxkotlin
+  compile 'io.reactivex:rxandroid:1.2.0'
+  compile common.dagger
+  provided common.javaxAnnotation
+  kapt common.daggerCompiler
+
+  //mosby
+/*
+  compile 'com.hannesdorfmann.mosby:mvp:3.0.0-SNAPSHOT'
+  compile 'com.hannesdorfmann.mosby:viewstate:3.0.0-SNAPSHOT'
+
+*/
+
+  //parent layer
+  compile presentation.appcompat
+  compile presentation.palette
+  compile presentation.recyclerview
+  compile presentation.cardview
+  compile presentation.design
+  compile presentation.support
+  compile presentation.glide
+  compile presentation.ankoSdk
+  compile presentation.ankoSupport
+  compile presentation.ankoAppcompat
+
+  //data layer
+  compile data.gson
+  compile data.retrofit2
+  compile data.okhttp3
+  compile data.okhttp3Logging
+  compile data.retrofit2Converter
+  compile data.retrofit2Adapter
+  compile data.googleOauthClient
+  compile data.googleHttpClient
+
+  //testing
+  testCompile commonTest.junit
+  testCompile commonTest.robolectric
+  testCompile commonTest.mockito
+  testCompile commonTest.robolectricShadows
+  testCompile commonTest.powermockJunit
+  testCompile common.kotlin
+
+  //android testing
+  androidTestCompile commonTest.dexmaker
+  androidTestCompile commonTest.dexmakerMockito
+  androidTestCompile commonTest.mockito
+  androidTestCompile(commonTest.junit) {
+    exclude module: 'hamcrest-core'
+  }
+}
+
+buildscript {
+  ext.kotlin_version = '1.0.4'
+  ext.realm_version = '0.89.1'
+  repositories {
+    jcenter()
+    mavenCentral()
+  }
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    classpath "io.realm:realm-gradle-plugin:$realm_version"
+  }
+}
+
+repositories {
+  mavenCentral()
+  maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
