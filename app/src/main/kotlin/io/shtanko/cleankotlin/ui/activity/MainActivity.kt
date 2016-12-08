@@ -1,9 +1,9 @@
-package io.shtanko.cleankotlin
+package io.shtanko.cleankotlin.ui.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import io.shtanko.cleankotlin.R
 
-public class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

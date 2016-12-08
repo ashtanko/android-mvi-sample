@@ -46,7 +46,7 @@ ext {
           glide                    : "3.7.0",
           crashlytics              : "2.5.5@aar",
           leakCanary               : "1.4-beta2",
-          mosby                    : "2.0.1",
+          moxy                     : "1.3.3",
           icepick                  : "3.2.0",
           either                   : "1.0.2",
           constraintLayout         : "1.0.0-alpha5",
@@ -135,8 +135,8 @@ ext {
           leakCanaryDebug      : "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary",
           leakCanaryRelease    : "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakCanary",
           //MVP
-          mosby                : "com.hannesdorfmann.mosby:mvp:$versions.mosby",
-          mosbyViewstate       : "com.hannesdorfmann.mosby:viewstate:$versions.mosby",
+          moxy                 : "com.arello-mobile:moxy:$versions.moxy",
+          moxyCompiler         : "com.arello-mobile:moxy-compiler:$versions.moxy",
           hockeySDK            : "net.hockeyapp.android:HockeySDK:$versions.hockeyapp",
           //Other
           icepick              : "frankiesardo:icepick:$versions.icepick",

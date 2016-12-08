@@ -6,7 +6,7 @@ import io.shtanko.cleankotlin.di.modules.HostModule
 import io.shtanko.cleankotlin.di.modules.NetworkModule
 import io.shtanko.cleankotlin.di.modules.RealmModule
 import dagger.Component
-import io.shtanko.cleankotlin.MainActivity
+import io.shtanko.cleankotlin.ui.activity.MainActivity
 import javax.inject.Singleton
 
 @Singleton
