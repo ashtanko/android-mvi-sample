@@ -6,14 +6,12 @@ allprojects {
 }
 
 ext {
-
-
   versions = [
 
-          buildTools               : "24.0.1",
+          buildTools               : "24.1.1",
           minSdk                   : 15,
-          targetSdk                : 24,
-          compileSdk               : 24,
+          targetSdk                : 25,
+          compileSdk               : 25,
           androidApplicationId     : "io.twere.vklite",
           versionCode              : 1,
           versionName              : "1.0",
@@ -66,15 +64,14 @@ ext {
           playServices             : "9.0.0",
           supportTest              : "0.5",
           findbugs                 : "2.0.3",
-
   ]
 
-  buildToolsVersion = "25.0.0"
+  buildToolsVersion = "25.0.2"
   minSdkVersion = 15
   targetSdkVersion = 25
   compileSdkVersion = 25
 
-  sdkVersion = '25.0.0'
+  sdkVersion = '24.1.1'
 
   appDependencies = [
 
@@ -156,11 +153,9 @@ ext {
           bus                  : "org.greenrobot:eventbus:$versions.bus",
           //Social
           vk                   : "com.vk:androidsdk:$versions.vk",
-
   ]
 
   appTestDependencies = [
-
           kotlinTest       : "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin",
           junit            : "junit:junit:$versions.junit",
           assertj          : "org.assertj:assertj-core:$versions.assertj",
@@ -177,6 +172,5 @@ ext {
           quickcheck       : "net.java.quickcheck:quickcheck:0.6",
           //   runner           : "com.android.support.test:runner:$versions.supportTest",
           // rules            : "com.android.support.test:rules:$versions.supportTest",
-
   ]
 }
