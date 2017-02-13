@@ -122,46 +122,20 @@ kapt {
 
 dependencies {
     def app = rootProject.ext.appDependencies
-    def appTest = rootProject.ext.appTestDependencies
 
     compile app.kotlin
-    //compile app.rxKotlin
     compile app.dagger
     provided app.javaxAnnotation
     kapt app.daggerCompiler
     compile app.androidSupportV4
-    //compile app.palette
-    //compile app.recyclerView
-    //compile app.cardView
     compile app.design
     compile app.androidSupport
-    //compile app.glide
-    //compile app.ankoAppCompat
-    //compile app.ankoSupport
-    //compile app.ankoSDK15
     compile app.gson
     compile app.retrofit
     compile app.okHttp
     compile app.okhttpLogging
     compile app.retrofitConverterGson
     compile app.retrofitRxAdapter
-
-    /*
-    //testing
-    testCompile appTest.junit
-    testCompile appTest.robolectric
-    testCompile appTest.mockito
-    testCompile app.kotlin
-
-    //android testing
-
-    androidTestCompile appTest.dexmaker
-    androidTestCompile appTest.dexmakerMockito
-    androidTestCompile appTest.mockito
-    androidTestCompile(appTest.junit) {
-        exclude module: 'hamcrest-core'
-    }
-    */
 }
 
 buildscript {
