@@ -7,6 +7,9 @@ jdk:
 #  - openjdk7
 #  - openjdk6
 env:
+  global:
+    - ADB_INSTALL_TIMEOUT=45 # minutes
+
   matrix:
     - ANDROID_TARGET=android-4  ANDROID_ABI=armeabi
     - ANDROID_TARGET=android-5  ANDROID_ABI=armeabi
@@ -128,4 +131,4 @@ before_script:
   - adb shell input keyevent 82 &
   
 
-script: adb shell ./gradlew clean build -Pbuild=dev -PdisablePreDex --stacktrace && monkey -p com.android.launcher -v 7777 --throttle 200
+script: adb shell monkey -p com.android.launcher -v 7777 --throttle 200
