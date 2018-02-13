@@ -23,6 +23,7 @@ class ApplicationModule {
   @Provides
   @Singleton
   fun provideConnectivityManager(): ConnectivityManager {
-    return AppDelegate.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    return AppDelegate.instance.getSystemService(
+        Context.CONNECTIVITY_SERVICE) as ConnectivityManager
   }
 }

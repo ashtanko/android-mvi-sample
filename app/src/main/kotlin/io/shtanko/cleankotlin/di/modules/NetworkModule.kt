@@ -16,7 +16,7 @@ class NetworkModule {
   @Provides
   @Singleton
   fun provideRetrofit(httpClient: OkHttpClient, baseUrl: String,
-                      converter: Converter.Factory): Retrofit {
+      converter: Converter.Factory): Retrofit {
     return Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(converter)
