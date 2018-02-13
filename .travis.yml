@@ -1,5 +1,11 @@
 language: android
+sudo: required 
+dist: precise
 jdk: oraclejdk8
+
+notifications:
+  email:
+  - adamluissean@gmail.com
 
 android:
   components:
@@ -7,14 +13,65 @@ android:
     - platform-tools
     - build-tools-26.0.2
     - android-27
+    - sys-img-armeabi-v7a-android-27
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-
+  
 cache:
   directories:
-    - $HOME/.gradle
-    - $HOME/.android/build-cache
+  - $HOME/.gradle/daemon
+  - $HOME/.gradle/native
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
+
+install:
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo y | android update sdk -u -a -t tools
+  - echo y | android update sdk -u -a -t platform-tools
+  - echo y | android update sdk -u -a -t build-tools-27.0.0
+  - echo y | android update sdk -u -a -t android-27
+  - echo y | android update sdk -u -a -t extra-google-m2repository
+  - echo y | android update sdk -u -a -t extra-android-m2repository
+  - echo y | android update sdk -u -a -t android-sdk-preview-license
+  - echo y | android update sdk -u -a -t android-sdk-license
+
+matrix:
+  include:
+    - env: ANDROID_TARGET=android-27  ANDROID_ABI=armeabi-v7a
+env:
+  global:
+    - ANDROID_API=27
+    - EMULATOR_API_LEVEL=25
+    - ANDROID_BUILD_TOOLS=26.0.2
+    - ADB_INSTALL_TIMEOUT=55 # minutes
+    - ANDROID_BUILD_TOOLS_VERSION=26.0.2
+    - ANDROID_ABI=armeabi-v7a
+    - ANDROID_TAG=google_apis
+    
+before_script:
+  # Create and start emulator
+  - echo PATH $PATH
+  - android list target
+  - android list sdk
+  - which android-update-sdk
+  - cat `which android-update-sdk`
+  - android-update-sdk
+  - android list sdk --all --extended
+  - uname -a
+  - df -h
+  - mount
+  - cat /proc/cpuinfo
+  - echo $ANDROID_TARGET
+  - echo $ANDROID_ABI
+  - chmod +x gradlew
+
+before_install:
+  - mkdir "$ANDROID_HOME/licenses" || true
+  - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
+  - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+  - chmod +x gradlew
+  - ./gradlew dependencies || true
 
 script: ./gradlew build
