@@ -1,4 +1,4 @@
-package io.shtanko.cleankotlin
+package dev.shtanko.mvi
 
 import android.app.Application
 
